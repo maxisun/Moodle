@@ -10,6 +10,16 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
 
+    <string name="carnet">Carnet</string>
+    <string name="nota">Nota</string>
+    <string name="materia">Materia</string>
+    <string name="catedratico">Catedratico</string>
+
+    <string name="carnet_hint">00354615</string>
+    <string name="nota_hint">9.8</string>
+    <string name="materia_hint">Fisica II</string>
+    <string name="catedratico_hint">Herbert Schneider</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -9,11 +9,11 @@
     tools:openDrawer="start"
     tools:context=".Activities.MainActivity">
 
-    <LinearLayout
-        android:background="@drawable/shiro"
+    <FrameLayout
+        android:id="@+id/frame_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </LinearLayout>
+    </FrameLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

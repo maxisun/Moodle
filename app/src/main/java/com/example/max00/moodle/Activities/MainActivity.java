@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         mactionBarDrawerToggle.syncState();
         //Set whether home should be displayed as an "up" affordance.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        setFragmentByDefault();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -56,7 +56,13 @@ public class MainActivity extends AppCompatActivity {
                         fragtransac = true;
                         break;
                 }
-                return false;
+                if (fragtransac){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_main,fragment).commit();
+                    item.setChecked(true);
+                    getSupportActionBar().setTitle(item.getTitle());
+                    mdrawerLayout.closeDrawers();
+                }
+                return true;
             }
         });
     }
@@ -64,6 +70,13 @@ public class MainActivity extends AppCompatActivity {
     private void initialize(){
         mdrawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+    }
+
+    private void setFragmentByDefault(){
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, new InsertFragment()).commit();
+        MenuItem item = navigationView.getMenu().getItem(0);
+        item.setChecked(true);
+        getSupportActionBar().setTitle(item.getTitle());
     }
 
     //funcion para hacer que funcione el boton para mostrar el drawerlayout
