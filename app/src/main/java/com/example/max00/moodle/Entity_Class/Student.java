@@ -1,34 +1,34 @@
 package com.example.max00.moodle.Entity_Class;
 
 public class Student {
-    private int carnet;
-    private float nota;
+    private String carnet;
+    private String nota;
     private String materia;
     private String catedratico;
 
     public Student() {
     }
 
-    public Student(int carnet, float nota, String materia, String catedratico) {
+    public Student(String carnet, String nota, String materia, String catedratico) {
         this.carnet = carnet;
         this.nota = nota;
         this.materia = materia;
         this.catedratico = catedratico;
     }
 
-    public int getCarnet() {
+    public String getCarnet() {
         return carnet;
     }
 
-    public void setCarnet(int carnet) {
+    public void setCarnet(String carnet) {
         this.carnet = carnet;
     }
 
-    public float getNota() {
+    public String getNota() {
         return nota;
     }
 
-    public void setNota(float nota) {
+    public void setNota(String nota) {
         this.nota = nota;
     }
 
