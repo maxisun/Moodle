@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/Insertar"
+            android:icon="@drawable/ingresar"
+            android:title="@string/Ingresar"/>
+        <item
+            android:id="@+id/Mostrar"
+            android:icon="@drawable/mostrar"
+            android:title="@string/Mostrar"/>
+        <item
+            android:id="@+id/Actualizar"
+            android:icon="@drawable/actualizar"
+            android:title="@string/Actualizar"/>
+        <item
+            android:id="@+id/Buscar"
+            android:icon="@drawable/buscar"
+            android:title="@string/Buscar"/>
+    </group>
+
+</menu>
