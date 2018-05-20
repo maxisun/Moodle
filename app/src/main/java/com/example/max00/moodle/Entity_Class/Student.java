@@ -1,6 +1,9 @@
 package com.example.max00.moodle.Entity_Class;
 
-public class Student {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Student implements Parcelable{
     private String carnet;
     private String nota;
     private String materia;
@@ -20,6 +23,38 @@ public class Student {
         this.carnet = carnet;
         this.nota = nota;
     }
+
+    protected Student(Parcel in) {
+        carnet = in.readString();
+        nota = in.readString();
+        materia = in.readString();
+        catedratico = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(carnet);
+        dest.writeString(nota);
+        dest.writeString(materia);
+        dest.writeString(catedratico);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Student> CREATOR = new Creator<Student>() {
+        @Override
+        public Student createFromParcel(Parcel in) {
+            return new Student(in);
+        }
+
+        @Override
+        public Student[] newArray(int size) {
+            return new Student[size];
+        }
+    };
 
     public String getCarnet() {
         return carnet;

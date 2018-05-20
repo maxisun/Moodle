@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initialize();
         DAO.getInstance(this);
-        list = DAO.myDB.getAllElements();
         mactionBarDrawerToggle = new ActionBarDrawerToggle(this,mdrawerLayout,R.string.open,R.string.close);
         mdrawerLayout.addDrawerListener(mactionBarDrawerToggle);
         //Synchronize the state of the drawer indicator/affordance with the linked DrawerLayout.
@@ -52,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                         fragtransac = true;
                         break;
                     case R.id.Mostrar:
+                        list = DAO.myDB.getAllElements();
                         fragment = ShowFragment.newInstance(list);
                         fragtransac = true;
                         break;

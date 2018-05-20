@@ -20,11 +20,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private LayoutInflater layoutInflater;
 
     public class StudentsViewHolder extends RecyclerView.ViewHolder{
-        TextView textView;
+        TextView textView,nota;
 
         public StudentsViewHolder(View itemview){
             super(itemview);
             textView = itemview.findViewById(R.id.muestra_viewholder);
+            nota = itemview.findViewById(R.id.nota_viewholder);
         }
     }
 
@@ -46,6 +47,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull StudentsViewHolder holder, int position) {
         final Student student = students.get(position);
         holder.textView.setText(student.getCarnet());
+        holder.nota.setText(student.getNota());
     }
 
     @Override

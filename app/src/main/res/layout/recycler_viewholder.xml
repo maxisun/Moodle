@@ -14,4 +14,12 @@
         android:text="@string/Mostrar"
         android:gravity="center"/>
 
+    <TextView
+        android:id="@+id/nota_viewholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="@string/Mostrar"
+        android:gravity="center"/>
+
 </LinearLayout>

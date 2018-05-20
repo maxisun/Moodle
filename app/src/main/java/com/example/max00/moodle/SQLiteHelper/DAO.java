@@ -87,6 +87,7 @@ public class DAO extends SQLiteOpenHelper {
                         //only one column
                         obj.setCarnet(cursor.getString(0));
                         //you could add additional columns here..
+                        obj.setNota(cursor.getString(1));
                         list.add(obj);
                     } while (cursor.moveToNext());
                 }
