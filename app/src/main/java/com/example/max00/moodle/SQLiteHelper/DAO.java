@@ -58,6 +58,18 @@ public class DAO extends SQLiteOpenHelper {
         return p;
     }
 
+    public boolean editUser(Student student){
+        String[] parametros = {student.getCarnet()};
+        //String[] campos = {CAMPO_NOMBRE};
+        ContentValues values = new ContentValues();
+        values.put(CAMPO_NOTA,student.getNota());
+        values.put(CAMPO_MATERIA,student.getMateria());
+        values.put(CAMPO_CATEDRATICO,student.getCatedratico());
+        db.update(TABLA_USUARIO,values,CAMPO_CARNET+"=?",parametros);
+        Toast.makeText(context,"Usuario Actualizado con exito",Toast.LENGTH_LONG).show();
+        return true;
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREAR_TABLA_USUARIO);

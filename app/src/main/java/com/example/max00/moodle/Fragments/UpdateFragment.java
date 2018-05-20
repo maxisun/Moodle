@@ -7,8 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
+import com.example.max00.moodle.Entity_Class.Student;
 import com.example.max00.moodle.R;
+import com.example.max00.moodle.SQLiteHelper.DAO;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +27,9 @@ public class UpdateFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    //components
+    private EditText carnet,nota,materia,catedratico;
+    private Button actualizar;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -65,7 +72,15 @@ public class UpdateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_update, container, false);
+        View v = inflater.inflate(R.layout.fragment_update, container, false);
+        initialize(v);
+        actualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DAO.myDB.editUser(new Student(carnet.getText().toString(),nota.getText().toString(),materia.getText().toString(),catedratico.getText().toString()));
+            }
+        });
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,5 +120,13 @@ public class UpdateFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void initialize(View v){
+        carnet = v.findViewById(R.id.carnet_update_edit_text);
+        nota = v.findViewById(R.id.nota_update_edit_text);
+        materia = v.findViewById(R.id.materia_update_edit_text);
+        catedratico = v.findViewById(R.id.catedratico_update_edit_text);
+        actualizar = v.findViewById(R.id.insertar_update_boton);
     }
 }
