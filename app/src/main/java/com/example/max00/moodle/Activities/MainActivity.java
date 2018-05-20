@@ -46,15 +46,15 @@ public class MainActivity extends AppCompatActivity {
                         fragtransac = true;
                         break;
                     case R.id.Mostrar:
-                        fragment = new SearchFragment();
-                        fragtransac = true;
-                        break;
-                    case R.id.Actualizar:
                         fragment = new ShowFragment();
                         fragtransac = true;
                         break;
-                    case R.id.Buscar:
+                    case R.id.Actualizar:
                         fragment = new UpdateFragment();
+                        fragtransac = true;
+                        break;
+                    case R.id.Buscar:
+                        fragment = new SearchFragment();
                         fragtransac = true;
                         break;
                 }

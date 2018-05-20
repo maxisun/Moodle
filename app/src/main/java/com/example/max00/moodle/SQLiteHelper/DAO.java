@@ -43,6 +43,21 @@ public class DAO extends SQLiteOpenHelper {
         Toast.makeText(context,"Insertado con exito", Toast.LENGTH_SHORT).show();
     }
 
+    public Student findUser(String carnet){
+        Student p;
+        String[] parametros = {carnet};
+        String[] campos = {CAMPO_NOTA,CAMPO_MATERIA,CAMPO_CATEDRATICO};
+
+        try {
+            Cursor cursor = db.query(TABLA_USUARIO,campos,CAMPO_CARNET+"=?",parametros,null,null,null);
+            cursor.moveToFirst();
+            p = new Student(carnet,cursor.getString(0),cursor.getString(1),cursor.getString(2));
+        }catch (Exception e){
+            p = null;
+        }
+        return p;
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREAR_TABLA_USUARIO);

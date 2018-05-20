@@ -7,8 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.max00.moodle.Entity_Class.Student;
 import com.example.max00.moodle.R;
+import com.example.max00.moodle.SQLiteHelper.DAO;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +29,10 @@ public class SearchFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    //components
+    private EditText carnet;
+    private Button search;
+    private TextView nota,materia,catedratico;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -65,7 +75,23 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        View v = inflater.inflate(R.layout.fragment_search, container, false);
+        initialize(v);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Student student = DAO.myDB.findUser(carnet.getText().toString());
+                if (student == null){
+                    Toast.makeText(getActivity(),"El usuario no fue encontrado",Toast.LENGTH_SHORT).show();
+                    clean();
+                }else {
+                    nota.setText(student.getNota());
+                    materia.setText(student.getMateria());
+                    catedratico.setText(student.getCatedratico());
+                }
+            }
+        });
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,5 +131,17 @@ public class SearchFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void initialize(View v){
+        carnet = v.findViewById(R.id.carnet_search_editext);
+        search = v.findViewById(R.id.search_search_button);
+        nota =  v.findViewById(R.id.nota_search_textview);
+        materia = v.findViewById(R.id.materia_search_textview);
+        catedratico = v.findViewById(R.id.catedratico_search_textview);
+    }
+
+    public void clean(){
+        carnet.setText("");
     }
 }

@@ -35,7 +35,6 @@ public class InsertFragment extends Fragment {
     private EditText materia;
     private EditText catedratico;
     private Button insertar;
-    private DAO dao;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
