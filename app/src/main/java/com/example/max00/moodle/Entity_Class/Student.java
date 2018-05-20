@@ -16,6 +16,11 @@ public class Student {
         this.catedratico = catedratico;
     }
 
+    public Student(String carnet, String nota) {
+        this.carnet = carnet;
+        this.nota = nota;
+    }
+
     public String getCarnet() {
         return carnet;
     }

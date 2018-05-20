@@ -56,54 +56,6 @@
             android:hint="@string/nota_hint"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="24sp"
-            android:hint="@string/materia"/>
-
-        <EditText
-            android:id="@+id/materia_update_edit_text"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:layout_gravity="center"
-            android:textSize="24sp"
-            android:hint="@string/materia_hint"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="23sp"
-            android:hint="@string/catedratico"/>
-
-        <EditText
-            android:id="@+id/catedratico_update_edit_text"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:layout_gravity="center"
-            android:textSize="24sp"
-            android:hint="@string/catedratico_hint"/>
-    </LinearLayout>
-
     <Button
         android:id="@+id/insertar_update_boton"
         android:layout_marginTop="8dp"

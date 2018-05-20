@@ -8,6 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
 import com.example.max00.moodle.Entity_Class.Student;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class DAO extends SQLiteOpenHelper {
     public static final String DB_NAME = "bd_usuarios";
     public static final String TABLA_USUARIO = "Estudiante";
@@ -63,11 +67,36 @@ public class DAO extends SQLiteOpenHelper {
         //String[] campos = {CAMPO_NOMBRE};
         ContentValues values = new ContentValues();
         values.put(CAMPO_NOTA,student.getNota());
-        values.put(CAMPO_MATERIA,student.getMateria());
-        values.put(CAMPO_CATEDRATICO,student.getCatedratico());
         db.update(TABLA_USUARIO,values,CAMPO_CARNET+"=?",parametros);
         Toast.makeText(context,"Usuario Actualizado con exito",Toast.LENGTH_LONG).show();
         return true;
+    }
+
+    public ArrayList<Student> getAllElements() {
+        ArrayList<Student> list = new ArrayList<Student>();
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLA_USUARIO;
+        SQLiteDatabase db = this.getReadableDatabase();
+        try {
+            Cursor cursor = db.rawQuery(selectQuery, null);
+            try {
+                // looping through all rows and adding to list
+                if (cursor.moveToFirst()) {
+                    do {
+                        Student obj = new Student();
+                        //only one column
+                        obj.setCarnet(cursor.getString(0));
+                        //you could add additional columns here..
+                        list.add(obj);
+                    } while (cursor.moveToNext());
+                }
+            } finally {
+                try { cursor.close(); } catch (Exception ignore) {}
+            }
+        } finally {
+            try { Toast.makeText(context,"izi?",Toast.LENGTH_SHORT).show(); } catch (Exception ignore) {}
+        }
+        return list;
     }
 
     @Override

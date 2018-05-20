@@ -28,7 +28,7 @@ public class UpdateFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     //components
-    private EditText carnet,nota,materia,catedratico;
+    private EditText carnet,nota;
     private Button actualizar;
 
     // TODO: Rename and change types of parameters
@@ -77,7 +77,7 @@ public class UpdateFragment extends Fragment {
         actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DAO.myDB.editUser(new Student(carnet.getText().toString(),nota.getText().toString(),materia.getText().toString(),catedratico.getText().toString()));
+                DAO.myDB.editUser(new Student(carnet.getText().toString(),nota.getText().toString()));
             }
         });
         return v;
@@ -125,8 +125,6 @@ public class UpdateFragment extends Fragment {
     public void initialize(View v){
         carnet = v.findViewById(R.id.carnet_update_edit_text);
         nota = v.findViewById(R.id.nota_update_edit_text);
-        materia = v.findViewById(R.id.materia_update_edit_text);
-        catedratico = v.findViewById(R.id.catedratico_update_edit_text);
         actualizar = v.findViewById(R.id.insertar_update_boton);
     }
 }

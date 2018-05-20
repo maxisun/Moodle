@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.max00.moodle.Entity_Class.Student;
 import com.example.max00.moodle.Fragments.InsertFragment;
 import com.example.max00.moodle.Fragments.SearchFragment;
 import com.example.max00.moodle.Fragments.ShowFragment;
@@ -16,10 +17,14 @@ import com.example.max00.moodle.Fragments.UpdateFragment;
 import com.example.max00.moodle.R;
 import com.example.max00.moodle.SQLiteHelper.DAO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mdrawerLayout;
     private ActionBarDrawerToggle mactionBarDrawerToggle;
     private NavigationView navigationView;
+    private ArrayList<Student> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initialize();
         DAO.getInstance(this);
+        list = DAO.myDB.getAllElements();
         mactionBarDrawerToggle = new ActionBarDrawerToggle(this,mdrawerLayout,R.string.open,R.string.close);
         mdrawerLayout.addDrawerListener(mactionBarDrawerToggle);
         //Synchronize the state of the drawer indicator/affordance with the linked DrawerLayout.
@@ -46,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                         fragtransac = true;
                         break;
                     case R.id.Mostrar:
-                        fragment = new ShowFragment();
+                        fragment = ShowFragment.newInstance(list);
                         fragtransac = true;
                         break;
                     case R.id.Actualizar:
@@ -89,5 +95,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
 
