@@ -4,11 +4,17 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.max00.moodle.Entity_Class.Student;
 import com.example.max00.moodle.R;
+import com.example.max00.moodle.SQLiteHelper.DAO;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +29,13 @@ public class InsertFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    //components
+    private EditText carnet;
+    private EditText nota;
+    private EditText materia;
+    private EditText catedratico;
+    private Button insertar;
+    private DAO dao;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -65,7 +78,15 @@ public class InsertFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_insert, container, false);
+        View v = inflater.inflate(R.layout.fragment_insert, container, false);
+        initialize(v);
+        insertar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DAO.myDB.add(new Student(carnet.getText().toString(),nota.getText().toString(),materia.getText().toString(),catedratico.getText().toString()));
+            }
+        });
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -105,5 +126,13 @@ public class InsertFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void initialize(View v){
+        carnet = v.findViewById(R.id.carnet_insert_edit_text);
+        nota = v.findViewById(R.id.nota_insert_edit_text);
+        materia = v.findViewById(R.id.materia_insert_edit_text);
+        catedratico = v.findViewById(R.id.catedratico_insert_edit_text);
+        insertar = v.findViewById(R.id.insertar_datos_boton);
     }
 }

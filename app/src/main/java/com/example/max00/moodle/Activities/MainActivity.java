@@ -14,6 +14,7 @@ import com.example.max00.moodle.Fragments.SearchFragment;
 import com.example.max00.moodle.Fragments.ShowFragment;
 import com.example.max00.moodle.Fragments.UpdateFragment;
 import com.example.max00.moodle.R;
+import com.example.max00.moodle.SQLiteHelper.DAO;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout mdrawerLayout;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialize();
+        DAO.getInstance(this);
         mactionBarDrawerToggle = new ActionBarDrawerToggle(this,mdrawerLayout,R.string.open,R.string.close);
         mdrawerLayout.addDrawerListener(mactionBarDrawerToggle);
         //Synchronize the state of the drawer indicator/affordance with the linked DrawerLayout.
