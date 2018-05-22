@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.max00.moodle.Entity_Class.Student;
 import com.example.max00.moodle.R;
@@ -77,7 +78,11 @@ public class UpdateFragment extends Fragment {
         actualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DAO.myDB.editUser(new Student(carnet.getText().toString(),nota.getText().toString()));
+                if(!carnet.getText().toString().isEmpty() && !nota.getText().toString().isEmpty()) {
+                    DAO.myDB.editUser(new Student(carnet.getText().toString(),nota.getText().toString()));
+                }else {
+                    Toast.makeText(getActivity(),"Llena los datos pendejo",Toast.LENGTH_LONG).show();
+                }
             }
         });
         return v;

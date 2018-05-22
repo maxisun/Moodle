@@ -22,4 +22,20 @@
         android:text="@string/Mostrar"
         android:gravity="center"/>
 
+    <TextView
+        android:id="@+id/materia_viewholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="@string/Mostrar"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/catedratico_viewholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="@string/Mostrar"
+        android:gravity="center"/>
+
 </LinearLayout>

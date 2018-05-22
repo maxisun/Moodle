@@ -82,7 +82,11 @@ public class InsertFragment extends Fragment {
         insertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DAO.myDB.add(new Student(carnet.getText().toString(),nota.getText().toString(),materia.getText().toString(),catedratico.getText().toString()));
+                if(!carnet.getText().toString().isEmpty() && !nota.getText().toString().isEmpty() && !materia.getText().toString().isEmpty() && !catedratico.getText().toString().isEmpty()) {
+                    DAO.myDB.add(new Student(carnet.getText().toString(), nota.getText().toString(), materia.getText().toString(), catedratico.getText().toString()));
+                }else {
+                    Toast.makeText(getActivity(),"Llena los datos pendejo",Toast.LENGTH_LONG).show();
+                }
             }
         });
         return v;

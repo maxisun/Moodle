@@ -88,6 +88,8 @@ public class DAO extends SQLiteOpenHelper {
                         obj.setCarnet(cursor.getString(0));
                         //you could add additional columns here..
                         obj.setNota(cursor.getString(1));
+                        obj.setMateria(cursor.getString(2));
+                        obj.setCatedratico(cursor.getString(3));
                         list.add(obj);
                     } while (cursor.moveToNext());
                 }
@@ -95,7 +97,7 @@ public class DAO extends SQLiteOpenHelper {
                 try { cursor.close(); } catch (Exception ignore) {}
             }
         } finally {
-            try { Toast.makeText(context,"izi?",Toast.LENGTH_SHORT).show(); } catch (Exception ignore) {}
+            try { Toast.makeText(context,"pinga",Toast.LENGTH_SHORT).show(); } catch (Exception ignore) {}
         }
         return list;
     }

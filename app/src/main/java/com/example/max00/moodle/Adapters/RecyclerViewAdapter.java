@@ -20,12 +20,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private LayoutInflater layoutInflater;
 
     public class StudentsViewHolder extends RecyclerView.ViewHolder{
-        TextView textView,nota;
+        TextView textView,nota,materia,catedratico;
 
         public StudentsViewHolder(View itemview){
             super(itemview);
             textView = itemview.findViewById(R.id.muestra_viewholder);
             nota = itemview.findViewById(R.id.nota_viewholder);
+            materia = itemview.findViewById(R.id.materia_viewholder);
+            catedratico = itemview.findViewById(R.id.catedratico_viewholder);
         }
     }
 
@@ -48,6 +50,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         final Student student = students.get(position);
         holder.textView.setText(student.getCarnet());
         holder.nota.setText(student.getNota());
+        holder.materia.setText(student.getMateria());
+        holder.catedratico.setText(student.getCatedratico());
     }
 
     @Override
